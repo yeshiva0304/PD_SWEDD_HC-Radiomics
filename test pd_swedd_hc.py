@@ -128,7 +128,7 @@ from sklearn.model_selection import train_test_split
 print("正在划分数据集...")
 y_data = data[labels]
 X_data = data.drop(labels, axis=1)
-X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.3, random_state=8216,stratify=y_data[labels[0]]
+X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.3, random_state=42,stratify=y_data[labels[0]]
     )
 print(f"数据集划分完成：训练集样本数 {X_train.shape}, 测试集样本数 {X_test.shape}")
 
