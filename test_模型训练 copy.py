@@ -698,192 +698,7 @@ plt.close()
 #绘制DCA决策曲线
 plot_multiclass_dca(y_test, proba_test_SVM, model_name='SVM', savepath="img/SVM_DCA.png")
 
-#3.KNN
-#KNN_metrics_list = []
-# 创建模型字典
-#model_names = ['KNN']  # 这里选择您想使用的模型名称（如 LR）
-#models_dict = okcomp.comp1.create_clf_model(model_names)
-#获取模型
-#KNN_model = models_dict['KNN'] 
-# 留一法训练
-#param_grid_KNN={'n_neighbors': [3, 5, 7, 9]}
-#grid_search_KNN = GridSearchCV(KNN_model, param_grid_KNN, cv=loo, scoring='roc_auc')
-#grid_search_KNN.fit(X_train, y_train)
-#print(grid_search_KNN.best_params_)
-#print(f"Best score: {grid_search_KNN.best_score_}")
-# 获取最优模型
-#best_model_KNN = grid_search_KNN.best_estimator_
-# 训练集预测
-#if hasattr(best_model_KNN,"predict_proba"):
- #   proba_train_KNN = best_model_KNN.predict_proba(X_train)[:, 1]
-#elif hasattr(best_model_KNN,"decision_function"):
- #   proba_train_KNN=expit(best_model_KNN.decision_function(X_train))
-#pred_train_KNN = (proba_train_KNN >= 0.5).astype(int)
-#pred_train_KNN=np.atleast_1d(pred_train_KNN)
- # 测试集预测
-#if hasattr(best_model_KNN,"predict_proba"):
- #   proba_test_KNN = best_model_KNN.predict_proba(X_test)[:, 1]
-#elif hasattr(best_model_KNN,"decision_function"):
- #   proba_test_KNN=expit(best_model_KNN.decision_function(X_test))
-#pred_test_KNN = (proba_test_KNN >= 0.5).astype(int)
-#pred_test_KNN=np.atleast_1d(pred_test_KNN)  
-# 计算KNN的评估指标
-#acc_train, auc_train, sens_train, spec_train, precision_train, recall_train, f1_train, ci_train_str = compute_metrics(
- #   y_train, proba_train_KNN)
-#acc_test, auc_test, sens_test, spec_test, precision_test, recall_test, f1_test, ci_test_str = compute_metrics(
-#    y_test, proba_test_KNN)
-
-#train_results['KNN'] = (y_train, proba_train_KNN, pred_train_KNN)
-#test_results['KNN'] = (y_test, proba_test_KNN, pred_test_KNN)
-
-#KNN_metrics_list.append({
- #   'model': 'KNN',
-  #  'dataset': 'train',
-   # 'accuracy': acc_train,
-    #'auc': auc_train,
-    #'sensitivity': sens_train,
-    #'specificity': spec_train,
-    #'precision': precision_train,
-    #'recall': recall_train,
-    #'f1': f1_train,
-    #'95%CI': ci_train_str
-#})
-#KNN_metrics_list.append({
- #   'model': 'KNN',
- #   'dataset': 'test',
- # 'accuracy': acc_test,
-  #  'auc': auc_test,
-  #  'sensitivity': sens_test,
-  #  'specificity': spec_test,
-  #  'precision': precision_test,
-  #  'recall': recall_test,
-  #  'f1': f1_test,
-  #  '95%CI': ci_test_str
-#})
-# 将 final_metrics_list 转换为 DataFrame
-#KNN_metrics_df = pd.DataFrame(KNN_metrics_list)
-
-# 保存为 CSV 文件
-#KNN_metrics_df.to_csv('results/KNN_model_metrics.csv', index=False)
-
-# 绘制KNN的ROC曲线
-#plt.figure(figsize=(8, 8))
-#okcomp.comp1.draw_roc([np.array(y_train), np.array(y_test)], 
- #                     [proba_train_KNN, proba_test_KNN], 
-  #                    labels=['Train', 'Test'], title=f'Model: KNN')
-
-#plt.savefig(f'img/Rad_model_KNN_roc.svg', bbox_inches='tight')
-# plt.show()
-#绘制混淆矩阵
-#cm_test = confusion_matrix(y_test, pred_test_KNN)
-#sns.heatmap(cm_test, annot=True, fmt='d', cmap='Blues', xticklabels=['Negative', 'Positive'], yticklabels=['Negative', 'Positive'])
-#plt.title(f'Confusion Matrix for KNN')
-#plt.ylabel('True label')
-#plt.xlabel('Predicted label')
-#plt.savefig(f'img/KNN_Confusion_Matrix.png')
-#plt.show()
-#plt.close()
-#绘制DCA决策曲线
-#thr, nb_m, nb_all, nb_none = dca_curves(y_test, proba_test_KNN, mode="snb")  # 使用标准化净获益
-#plot_dca(thr, nb_m, nb_all, nb_none, label='KNN', savepath=f"img/KNN_DCA.png")
-
-#4.RandomForest
-#RandomForest_metrics_list = []
-
-# 创建模型字典
-#model_names = ['RandomForest']  # 这里选择您想使用的模型名称（如 LR）
-#models_dict = okcomp.comp1.create_clf_model(model_names)
-#获取模型
-#RandomForest_model = models_dict['RandomForest'] 
-# 留一法训练
-#param_grid_RandomForest={'n_estimators': [10, 50, 100, 200],
-#    'max_depth': [None, 10, 20, 30],
-#    'min_samples_split': [2, 5, 10],
- #   'min_samples_leaf': [1, 2, 4]}
-#grid_search_RandomForest = GridSearchCV(RandomForest_model, param_grid_RandomForest, cv=loo, scoring='roc_auc')
-#grid_search_RandomForest.fit(X_train, y_train)
-#print(grid_search_RandomForest.best_params_)
-#print(f"Best score: {grid_search_RandomForest.best_score_}")
-# 获取最优模型
-#best_model_RandomForest = grid_search_RandomForest.best_estimator_
-# 训练集预测
-#if hasattr(best_model_RandomForest,"predict_proba"):
-#    proba_train_RandomForest = best_model_RandomForest.predict_proba(X_train)[:, 1]
-#elif hasattr(best_model_RandomForest,"decision_function"):
-#    proba_train_RandomForest=expit(best_model_RandomForest.decision_function(X_train))
-    
-#pred_train_RandomForest = (proba_train_RandomForest >= 0.5).astype(int)
-#pred_train_RandomForest=np.atleast_1d(pred_train_RandomForest)
-
-# 测试集预测
-#if hasattr(best_model_RandomForest,"predict_proba"):
- #   proba_test_RandomForest = best_model_RandomForest.predict_proba(X_test)[:, 1]
-#elif hasattr(best_model_RandomForest,"decision_function"):
-#   proba_test_RandomForest=expit(best_model_RandomForest.decision_function(X_test))
-
-#pred_test_RandomForest = (proba_test_RandomForest>= 0.5).astype(int)
-#pred_test_RandomForest=np.atleast_1d(pred_test_RandomForest)
-
-# 计算RF的评估指标
-#acc_train, auc_train, sens_train, spec_train, precision_train, recall_train, f1_train, ci_train_str = compute_metrics(
-#    y_train, proba_train_RandomForest)
-#acc_test, auc_test, sens_test, spec_test, precision_test, recall_test, f1_test, ci_test_str = compute_metrics(
-#    y_test, proba_test_RandomForest)
-
-#train_results['RandomForest'] = (y_train, proba_train_RandomForest, pred_train_RandomForest)
-#test_results['RandomForest'] = (y_test, proba_test_RandomForest, pred_test_RandomForest)
-
-#RandomForest_metrics_list.append({
-#    'model': 'RandomForest',  
-#    'dataset': 'train',
-#    'accuracy': acc_train,
-#    'auc': auc_train,
-#    'sensitivity': sens_train,
-#    'specificity': spec_train,
-#    'precision': precision_train,
-#    'recall': recall_train,
-#    'f1': f1_train,
-#    '95%CI': ci_train_str
-#})
-#RandomForest_metrics_list.append({
-#    'model': 'RandomForest',
-#    'dataset': 'test',
-#    'accuracy': acc_test,
-#    'auc': auc_test,
-#    'sensitivity': sens_test,
-#    'specificity': spec_test,
- #   'precision': precision_test,
- #   'recall': recall_test,
- #   'f1': f1_test,
- #   '95%CI': ci_test_str
-#})
-# 将 final_metrics_list 转换为 DataFrame
-#RandomForest_metrics_df = pd.DataFrame(RandomForest_metrics_list)
-
-# 保存为 CSV 文件
-#RandomForest_metrics_df.to_csv('results/RandomForest_model_metrics.csv', index=False)
-
-# 绘制RF的ROC曲线
-#plt.figure(figsize=(8, 8))
-#okcomp.comp1.draw_roc([np.array(y_train), np.array(y_test)], 
- #                     [proba_train_RandomForest, proba_test_RandomForest], 
- #                     labels=['Train', 'Test'], title=f'Model: RandomForest')
-
-#plt.savefig(f'img/Rad_model_RandomForest_roc.svg', bbox_inches='tight')
-#plt.show()
-#绘制混淆矩阵
-#cm_test = confusion_matrix(y_test, pred_test_RandomForest)
-#sns.heatmap(cm_test, annot=True, fmt='d', cmap='Blues', xticklabels=['Negative', 'Positive'], yticklabels=['Negative', 'Positive'])
-#plt.title(f'Confusion Matrix for RandomForest')
-#plt.ylabel('True label')
-#plt.xlabel('Predicted label')
-#plt.savefig(f'img/RandomForest_Confusion_Matrix.png')
-#plt.show()
-#plt.close()
-#绘制DCA决策曲线
-#thr, nb_m, nb_all, nb_none = dca_curves(y_test, proba_test_RandomForest, mode="snb")  # 使用标准化净获益
-#plot_dca(thr, nb_m, nb_all, nb_none, label='RandomForest', savepath=f"img/RandomForest_DCA.png")
-#5.XGBoost
+#3.XGBoost
 from xgboost import XGBClassifier
 
 XGBoost_metrics_list = []
@@ -1008,7 +823,7 @@ plt.close()
 #绘制DCA决策曲线
 plot_multiclass_dca(y_test, proba_test_XGBoost, model_name='XGBoost', savepath="img/XGBoost_DCA.png")
 
-#6.LightGBM
+#4.LightGBM
 import lightgbm as lgb  
 from lightgbm import LGBMClassifier
 LightGBM_metrics_list = []
@@ -1133,103 +948,7 @@ plt.close()
 #绘制DCA决策曲线
 plot_multiclass_dca(y_test, proba_test_LightGBM, model_name='LightGBM', savepath="img/LightGBM_DCA.png")
 
-#7.MLP
-#MLP_metrics_list = []
-
-# 创建模型字典
-#model_names = ['MLP']  # 这里选择您想使用的模型名称（如 LR）
-#models_dict = okcomp.comp1.create_clf_model(model_names)
-#获取模型
-#MLP_model = models_dict['MLP'] 
-# 留一法训练
-#param_grid_MLP={'hidden_layer_sizes': [(50,), (100,), (50, 50)], 'activation': ['relu', 'tanh']}
-#grid_search_MLP = GridSearchCV(MLP_model, param_grid_MLP, cv=loo, scoring='roc_auc')
-#grid_search_MLP.fit(X_train, y_train)
-#print(grid_search_MLP.best_params_)
-#print(f"Best score: {grid_search_MLP.best_score_}")
-# 获取最优模型
-#best_model_MLP = grid_search_MLP.best_estimator_
-    
-    # 训练集预测
-#if hasattr(best_model_MLP,"predict_proba"):
- #   proba_train_MLP = best_model_MLP.predict_proba(X_train)[:, 1]
-#elif hasattr(best_model_MLP,"decision_function"):
-#    proba_train_MLP=expit(best_model_MLP.decision_function(X_train))
-    
-#pred_train_MLP = (proba_train_MLP >= 0.5).astype(int)
-#pred_train_MLP=np.atleast_1d(pred_train_MLP)
-    
-
-    # 测试集预测
-#if hasattr(best_model_MLP,"predict_proba"):
-#    proba_test_MLP = best_model_MLP.predict_proba(X_test)[:, 1]
-#elif hasattr(best_model_MLP,"decision_function"):
-#    proba_test_MLP=expit(best_model_MLP.decision_function(X_test))
-
-#pred_test_MLP = (proba_test_MLP >= 0.5).astype(int)
-#pred_test_MLP=np.atleast_1d(pred_test_MLP)
-
-# 计算MLP的评估指标
-#acc_train, auc_train, sens_train, spec_train, precision_train, recall_train, f1_train, ci_train_str = compute_metrics(
- #   y_train, proba_train_MLP)
-#acc_test, auc_test, sens_test, spec_test, precision_test, recall_test, f1_test, ci_test_str = compute_metrics(
-#    y_test, proba_test_MLP)
-
-#train_results['MLP'] = (y_train, proba_train_MLP, pred_train_MLP)
-#test_results['MLP'] = (y_test, proba_test_MLP, pred_test_MLP)
-
-#MLP_metrics_list.append({
-#    'model': 'MLP',
-#   'dataset': 'train',
-#    'accuracy': acc_train,
-#    'auc': auc_train,
-#    'sensitivity': sens_train,
-#    'specificity': spec_train,
-#    'precision': precision_train,
-#    'recall': recall_train,
-#    'f1': f1_train,
-#    '95%CI': ci_train_str
-#})
-#MLP_metrics_list.append({
-#    'model': 'MLP',
-#    'dataset': 'test',
-#    'accuracy': acc_test,
-#    'auc': auc_test,
-#    'sensitivity': sens_test,
-#    'specificity': spec_test,
-#    'precision': precision_test,
-#    'recall': recall_test,
-#    'f1': f1_test,
-#    '95%CI': ci_test_str
-#})
-# 将 final_metrics_list 转换为 DataFrame
-#MLP_metrics_df = pd.DataFrame(MLP_metrics_list)
-
-# 保存为 CSV 文件
-#MLP_metrics_df.to_csv('results/MLP_model_metrics.csv', index=False)
-
-# 绘制MLP的ROC曲线
-#plt.figure(figsize=(8, 8))
-#okcomp.comp1.draw_roc([np.array(y_train), np.array(y_test)], 
-#                      [proba_train_MLP, proba_test_MLP], 
-#                      labels=['Train', 'Test'], title=f'Model: MLP')
-
-#plt.savefig(f'img/Rad_model_MLP_roc.svg', bbox_inches='tight')
-#plt.show()
-#绘制混淆矩阵
-#cm_test = confusion_matrix(y_test, pred_test_MLP)
-#sns.heatmap(cm_test, annot=True, fmt='d', cmap='Blues', xticklabels=['Negative', 'Positive'], yticklabels=['Negative', 'Positive'])
-#plt.title(f'Confusion Matrix for MLP')
-#plt.ylabel('True label')
-#plt.xlabel('Predicted label')
-#plt.savefig(f'img/MLP_Confusion_Matrix.png')
-#plt.show()
-#plt.close()
-#绘制DCA决策曲线
-#thr, nb_m, nb_all, nb_none = dca_curves(y_test, proba_test_MLP, mode="snb")  # 使用标准化净获益
-#plot_dca(thr, nb_m, nb_all, nb_none, label='MLP', savepath=f"img/MLP_DCA.png")
-
-#8.ExtraTrees
+#5.ExtraTrees
 from sklearn.ensemble import ExtraTreesClassifier
 ExtraTrees_metrics_list = []
 param_grid_ExtraTrees = {
@@ -1354,6 +1073,7 @@ plot_multiclass_dca(y_test, proba_test_ExtraTrees, model_name='ExtraTrees', save
 
 
      
+
 
 
 
