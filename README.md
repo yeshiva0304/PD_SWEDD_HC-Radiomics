@@ -16,7 +16,6 @@ The goal of this study is to develop a robust machine learning framework based o
 - **feature_engineering**: Contains scripts for local radiomic feature extraction via the 3D sliding window method and the consensus-based selection (p-value, mRMR, and LASSO) performed on the training cohort.
 - **modeling_and_prediction**: Includes the randomized 70/30 train-test split, hyperparameter tuning for all five evaluated models, and the final model locking for XGBoost.
 - **interpretability_and_mapping**: Scripts for SHAP analysis and the generation of voxel-wise spatial mapping (as presented in Figure 8) to validate neuroanatomical consistency.
-- **data**: Anonymized feature matrices extracted after preprocessing, provided for immediate replication of the machine learning pipeline.
 - **requirements.txt**: List of Python dependencies required to run the analysis
 
 ##  Getting Started
