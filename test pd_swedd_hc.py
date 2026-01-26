@@ -164,7 +164,7 @@ sns.stripplot(x="group", y="pvalue", data=stats_df_plot, ax=g.ax, color='black')
 plt.savefig(f'img/Rad_feature_stats.png', bbox_inches='tight')
 plt.close()
 #调整p值进行筛选
-pvalue=0.1
+pvalue=0.05
 p_selected_features=list(stats_df[stats_df['pvalue'] < pvalue]['feature_name'])
 print(f"P值筛选后的特征数量：{len(p_selected_features)}")
 
@@ -182,7 +182,7 @@ from sklearn.linear_model import Lasso
 print("\n步骤 2: 在P值筛选后的训练集上进行相关系数筛选...")
 pearson_corr = X_train_p.corr('pearson')
 # 根据相关系数，对于相关性比较高的特征（一般文献取corr>0.9）两者保留其一
-corr_selected_features = select_feature(pearson_corr, threshold=0.99, topn=128, verbose=True)
+corr_selected_features = select_feature(pearson_corr, threshold=0.9, topn=128, verbose=True)
 print(f"相关系数筛选后的特征数量：{len(corr_selected_features)}")
 
 # 将相关系数筛选结果应用到训练集和测试集
@@ -312,7 +312,7 @@ for label in labels:
     models.append(clf)
 
 #特征筛选（筛选出其中coef>0的特征并打印出相应的公式）
-COEF_THRESHOLD = 1e-7  # 筛选的特征阈值
+COEF_THRESHOLD = 1e-6  # 筛选的特征阈值
 scores = []  # 用于存储公式
 lasso_final_features_list = []  # 存储符合阈值的特征
 feat_coef= []  # 存储特征名和系数的列表
