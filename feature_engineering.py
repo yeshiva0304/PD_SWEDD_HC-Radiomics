@@ -350,30 +350,7 @@ if feat_coef:
     feat_coef_df = feat_coef_df[abs(feat_coef_df['Coefficients']) > COEF_THRESHOLD]
     feat_coef_df = feat_coef_df.sort_values(by='Coefficients')
 
-    def simplify_feature_name(name):
-    # 示例简化规则
-      name = name.replace('original_glcm_Correlation_T1-Thalamus', 'Thal GLCM Correlation')
-      name = name.replace('original_firstorder_Skewness_T1-Nucleus accumbens', 'NAcc Skewness')
-      name = name.replace('original_glcm_Imc1_T1-Putamen', 'Put Imc1')
-      name = name.replace('original_gldm_SmallDependenceLowGrayLevelEmphasis_T1-Putamen', 'Put SmallDependence')
-      name = name.replace('original_glrlm_GrayLevelVariance_T2-Ventral Midbrain', 'VM GrayLevelVariance')
-      name = name.replace('original_shape_Maximum3DDiameter_T2-Putamen', 'Put Max3DDiameter')
-      name = name.replace('original_shape_Flatness_T2-Putamen', 'Put Flatness')
-      name = name.replace('original_shape_VoxelVolume_T2-Nucleus accumbens', 'NAcc VoxelVolume')
-      name=name.replace('original_gldm_SmallDependenceLowGrayLevelEmphasis_T2-Nucleus accumbens','NAcc SmallDependence')
-      name=name.replace('original_shape_Sphericity_T2-Caudate Nucleus','Cau Sphericity')
-      name=name.replace('original_shape_Flatness_T2-Thalamus','Thal Flatness')
-      name=name.replace('original_glszm_SmallAreaEmphasis_T1-Putamen','Put SmallAreaEmphasis')
-      name=name.replace('original_firstorder_Skewness_T1-Putamen','Put Skewness')
-      name=name.replace('original_shape_SurfaceVolumeRatio_T2-Caudate Nucleus','Cau SurfaceVolumeRatio')
-      name=name.replace('original_firstorder_Variance_T2-Ventral Midbrain','VM Variance')
-      name=name.replace('original_shape_SurfaceVolumeRatio_T2-Nucleus accumbens','NAcc SurfaceVolumeRatio')
-      name=name.replace('original_firstorder_Kurtosis_T1-Nucleus accumbens','NAcc Kurtosis')
-      name=name.replace('original_glcm_ClusterShade_T1-Nucleus accumbens','NAcc ClusterShade')
-    # 可以根据需要添加更多规则
-      return name
-
-    feat_coef_df['feature_name'] = feat_coef_df['feature_name'].apply(simplify_feature_name)
+    feat_coef_df['feature_name'] = feat_coef_df['feature_name'].apply(feature_name)
 
     ax=feat_coef_df.plot(x='feature_name', y='Coefficients', kind='barh',figsize=(12, 8))
     from matplotlib.ticker import MultipleLocator, FormatStrFormatter
