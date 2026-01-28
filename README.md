@@ -1,7 +1,7 @@
 # PD_SWEDD_HC-Radiomics
 
 This repository contains the official implementation for the study: 
-**"Explainable MRI Radiomics for Differentiating Parkinson’s Disease, SWEDD, and Healthy Controls: A Multi-Class Machine Learning Framework."**
+**"Explainable MRI radiomics of the basal ganglia and ventral midbrain distinguishes Parkinson’s disease, SWEDD, and healthy controls"**
 
 ##  Project Overview
 The goal of this study is to develop a robust machine learning framework based on MRI radiomics to differentiate between PD patients, SWEDD subjects, and healthy controls. We prioritize model interpretability through SHAP analysis and provide spatial feature mapping to validate the biological plausibility of our radiomic markers.
